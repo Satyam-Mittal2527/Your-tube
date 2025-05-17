@@ -7,7 +7,7 @@ export const watchlatercontroller = async (req, res) => {
     await addtowatchlater.save();
     res.status(200).json("added to watch later");
   } catch (error) {
-    req.status(400).json(error);
+    res.status(400).json(error);
     return;
   }
 };
@@ -17,7 +17,7 @@ export const getallwatchlatercontroller = async (req, res) => {
     const files = await watchlater.find();
     res.status(200).send(files);
   } catch (error) {
-    req.status(400).json(error);
+    res.status(400).json(error);
     return;
   }
 };
@@ -31,7 +31,7 @@ export const deletewatchlater = async (req, res) => {
     });
     res.status(200).json({ message: "removed from the watch later" });
   } catch (error) {
-    req.status(400).json(error);
+    res.status(400).json(error);
     return;
   }
 };

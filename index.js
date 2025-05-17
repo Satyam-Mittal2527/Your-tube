@@ -5,8 +5,11 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import videoroutes from './Routes/video.js';
 import userroutes from "./Routes/User.js"
+import timerroutes from "./Routes/timer.js"
 import path from 'path'
 import commentroutes from './Routes/comment.js';
+import { sendEmail } from './Controllers/sendEmail.js';
+
 dotenv.config()
 const app = express();
 app.use(cors())
@@ -17,9 +20,11 @@ app.get('/', (req,res)=>{
     res.send("Your tube is working")
 })
 app.use('/user',userroutes)
+app.use('/time',timerroutes)
 app.use(bodyParser.json())
 app.use('/video',videoroutes)
 app.use('/comment',commentroutes)
+app.post('/send-email',sendEmail)
 const port= process.env.PORT
 
 app.listen(port,()=>{

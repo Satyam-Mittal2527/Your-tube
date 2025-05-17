@@ -19,6 +19,7 @@ import {
   getallhistorycontroller,
   deletehistorycontroller,
 } from "../Controllers/History.js";
+import { Pointcontroller,getPoints } from "../Controllers/Points.js";
 const routes = express.Router();
 
 routes.post("/uploadvideo", auth, upload.single("file"), uploadvideo);
@@ -38,5 +39,9 @@ routes.delete("/deletewatchlater/:videoid/:viewer", auth, deletewatchlater);
 routes.post("/likedvideo", auth, likedvideocontroller);
 routes.get("/getalllikedvideo", getalllikedvideo);
 routes.delete("/deletelikedvideo/:videoid/:viewer", auth, deletelikedvideo);
+
+routes.patch("/points/:id",Pointcontroller);
+routes.get("/getPoints",getPoints)
+// API.patch(`/video/points/${id}`)
 
 export default routes;

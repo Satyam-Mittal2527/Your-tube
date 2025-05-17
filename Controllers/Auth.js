@@ -12,6 +12,7 @@ export const login = async (req, res) => {
           {
             email: newuser.email,
             id: newuser._id,
+            points: newuser.points,
           },
           process.env.JWT_SECERT,
           {
@@ -25,11 +26,12 @@ export const login = async (req, res) => {
       }
     } else {
         const token =jwt.sign({
-            email: extinguser.email,id:extinguser._id
+            email: extinguser.email,id:extinguser._id,points: extinguser.points,
         },process.env.JWT_SECERT,{
             expiresIn:"1h"
         }
         )
+        // console.log("User points in DB:", extinguser.points);
       res.status(200).json({ result: extinguser, token });
     }
   } catch (error) {
