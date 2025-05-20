@@ -14,7 +14,7 @@ export const mailOtp = async (req, res) => {
     }
     let responseOtp = 0;
     if (condition) {
-      responseOtp = await axios.post("http://localhost:5000/user/TriggerMail", {
+      responseOtp = await axios.post("https://your-tube-ovhq.onrender.com/user/TriggerMail", {
         email,
       });
       // console.log("Returned Otp Code:", responseOtp.data.OtpCode);
@@ -22,7 +22,7 @@ export const mailOtp = async (req, res) => {
       res.status(200).json({OtpCode : responseOtp.data.OtpCode})
     }else{
         // console.log("Calling sms")
-        responseOtp = await axios.post("http://localhost:5000/user/SmsOtp",{phone: phone})
+        responseOtp = await axios.post("https://your-tube-ovhq.onrender.com/user/SmsOtp",{phone: phone})
         // console.log("responseOtp:",responseOtp.data.otp)
         res.status(200).json({OtpCode : responseOtp.data.otp})
     }
