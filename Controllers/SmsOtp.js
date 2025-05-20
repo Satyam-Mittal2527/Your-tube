@@ -2,8 +2,8 @@ import twilio from "twilio";
 
 export const smsOtp = async (req, res) => {
     const {phone} = req.body;
-  const accountSid = "ACb65da0259e66e8c9e3096e7172988f8b";
-  const authToken = "619e8b1175950bd7383937a8db87f0da";
+  const accountSid =process.env.accountSid;
+  const authToken = process.env.authToken;
   const client = twilio(accountSid, authToken);
   const otp = Math.floor(Math.random() * 100000);
   try {
