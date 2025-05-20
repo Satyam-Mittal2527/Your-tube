@@ -18,8 +18,8 @@ export const smsOtp = async (req, res) => {
       });
 
       console.log(message.sid);
-      res.status(200).json({ message: "Otp sent successfully", otp : otp});
+      return res.status(200).json({ message: "Otp sent successfully", otp : otp});
   } catch (error) {
-    res.json(400).json("Error sms", error);
+    return res.status(400).json("Error sms", error);
   }
 };
