@@ -10,17 +10,16 @@ export const smsOtp = async (req, res) => {
   const client = twilio(accountSid, authToken);
   const otp = Math.floor(Math.random() * 100000);
   try {
-    console.log("Sending sms");
-    const message= await client.messages
+    client.messages
       .create({
         body: `${otp}`,
         from: "+19207893050",
         to: `${phone}`,
-      });
-      console.log("Sent Otp");
-      console.log(message.sid);
-      res.status(200).json({ message: "Otp sent successfully", otp : otp});
+      })
+      .then((message) => res
+      .status(200)
+      .json({ message: "Otp sent successfully", otp : otp}));
   } catch (error) {
-    res.status(400).json("Error sms", error);
+    res.json(400).json("Error sms", error);
   }
 };
