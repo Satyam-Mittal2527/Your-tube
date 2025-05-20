@@ -9,9 +9,10 @@ export const TimeController = async(req,res) => {
         const resCity = response.data.regionName;
         // console.log(resCity)
         const date = new Date();
+        // console.log(date)
         const time= date.getHours()
         // console.log(time)
-        res.status(200).json({hour:time , city : resCity});
+        res.status(200).json({ip: ip,hour:time , city : resCity});
     } catch (error) {
         res.status(400).json(error)
     }

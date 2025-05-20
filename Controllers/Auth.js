@@ -1,5 +1,7 @@
 import users from "../Models/Auth.js";
 import jwt from "jsonwebtoken";
+import axios from "axios";
+import nodemailer from "nodemailer"
 export const login = async (req, res) => {
   const { email } = req.body;
   // console.log(email)
@@ -19,6 +21,8 @@ export const login = async (req, res) => {
             expiresIn: "1h",
           }
         );
+
+
         res.status(200).json({ result: newuser, token });
       } catch {
         res.status(500).json({ mess: "something went wrong...." });
@@ -32,10 +36,10 @@ export const login = async (req, res) => {
         }
         )
         // console.log("User points in DB:", extinguser.points);
-      res.status(200).json({ result: extinguser, token });
+      res.status(200).json({ result: extinguser, token});
     }
   } catch (error) {
-    res.status(500).json({ mess: "something went wrong...." });
+    res.status(500).json({ mess: "something went wrong....",error});
     return;
   }
 };

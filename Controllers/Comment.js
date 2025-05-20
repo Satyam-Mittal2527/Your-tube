@@ -7,13 +7,13 @@ export const postcomment = async (req, res) => {
   const commentdata = req.body;
   const postcomment = new comment(commentdata);
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-  console.log(ip)
+  // console.log(ip)
   const response = await axios.get(`http://ip-api.com/json/${ip}`)
-  console.log(response)
+  // console.log(response)
   const city = response.data.city;
-  console.log(city)
+  // console.log(city)
   postcomment.city= city;
-  console.log(postcomment)
+  // console.log(postcomment)
   try {
     const saved=await postcomment.save();
     // console.log(saved)
@@ -42,7 +42,7 @@ export const deletecomment = async (req, res) => {
     await comment.findByIdAndDelete(_id);
     res.status(200).json({ message: "deleted comment" });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     res.status(400).json(error.message);
     return;
   }
@@ -107,9 +107,9 @@ export const countDislike = async (req, res) => {
 // }
 export const Translate_comment = async (req, res) => {
   // const { id: _id } = req.params;
-  console.log(req.body)
+  // console.log(req.body)
   const { lang } = req.body;
-  console.log(lang)
+  // console.log(lang)
   // console.log(_id);
   // if (!mongoose.Types.ObjectId.isValid(_id)) {
   //   return res.status(400).send("Comments unavailable..");
@@ -117,14 +117,14 @@ export const Translate_comment = async (req, res) => {
   try {
     // const text = await comment.findById(_id);
     const {cmtbody} = req.body;
-    console.log(cmtbody)
+    // console.log(cmtbody)
     const encodedText = encodeURIComponent(cmtbody);
     const SourceLanguage = req.params.Language;
-    console.log(SourceLanguage)
+    // console.log(SourceLanguage)
     // console.log(comment_body);
     const url = `https://api.mymemory.translated.net/get?q=${encodedText}&langpair=${SourceLanguage}|${lang}`;
     const response = await axios.get(url);
-    console.log(response);
+    // console.log(response);
     const Translated_text = response.data.responseData.translatedText;
     return res.status(200).json(Translated_text);
   } catch (error) {
