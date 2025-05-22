@@ -3,7 +3,7 @@ import nodemailer from "nodemailer"
 
 export const sendEmail = async (req, res) => {
   try {
-    // console.log(req.body)
+    console.log(req.body)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       port: 465,

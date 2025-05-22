@@ -7,7 +7,6 @@ import { mailOtp } from "../Controllers/MailOtp.js";
 import {smsOtp} from "../Controllers/SmsOtp.js";
 import invoice from "../Helper/invoice.js";
 const routes=express.Router();
-
 routes.post('/SmsOtp',smsOtp)
 routes.post('/OtpLogin',mailOtp)
 routes.post('/login',login)
