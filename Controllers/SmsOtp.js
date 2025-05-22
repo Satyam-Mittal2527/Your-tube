@@ -1,4 +1,4 @@
-import axios from "axios";
+import twilio from 'twilio';
 
 export const smsOtp = async (req, res) => {
   console.log("In the controller");
