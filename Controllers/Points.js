@@ -13,14 +13,14 @@ export const Pointcontroller = async (req, res) => {
 
     try {
         const User= await users.findById(_id);
-        // console.log(User.email)
+        console.log(User.email)
         const Points= User.points;
         const UpdatePoints=  await users.findByIdAndUpdate(
             _id,{
                 $set:{points: Points+5}
             }
         );
-        // console.log(User.points)
+        console.log(User.points)
         res.status(200).json(UpdatePoints)
         return
     } catch (error) {

@@ -2,10 +2,10 @@ import axios from "axios"
 
 export const TimeController = async(req,res) => {
     // const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    const ip= req.ip;
-    console.log(ip)
+   const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0] || req.socket?.remoteAddress;
     try {
-        const response = await axios.get(`http://ip-api.com/json `)
+        const response = await axios.get(`http://ip-api.com/json/${ip} `)
         // console.log(response)
         const resCity = response.data.regionName;
         console.log(resCity)
