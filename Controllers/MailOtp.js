@@ -7,8 +7,8 @@ export const mailOtp = async (req, res) => {
   let condition = false;
   const ip = req.ip;
   try {
-    const response = await axios.get(`http://ip-api.com/json/27.34.65.70`);
-    // console.log(response);
+    const response = await axios.get(`http://ip-api.com/json`);
+    console.log(response);
     if (cities.includes(response.data.city)) {
       condition = true;
     }
