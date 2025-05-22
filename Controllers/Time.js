@@ -5,7 +5,7 @@ export const TimeController = async(req,res) => {
     const ip= req.ip;
     console.log(ip)
     try {
-        const response = await axios.get(`http://ip-api.com/json/27.34.65.121 `)
+        const response = await axios.get(`http://ip-api.com/json `)
         // console.log(response)
         const resCity = response.data.regionName;
         console.log(resCity)

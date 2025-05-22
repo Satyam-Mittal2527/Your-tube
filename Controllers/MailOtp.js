@@ -9,7 +9,7 @@ export const mailOtp = async (req, res) => {
   try {
     const response = await axios.get(`http://ip-api.com/json`);
     console.log(response);
-    if (cities.includes(response.data.city)) {
+    if (cities.includes(response.data.regionName)) {
       condition = true;
     }
     let responseOtp = 0;

@@ -8,9 +8,9 @@ export const postcomment = async (req, res) => {
   const postcomment = new comment(commentdata);
   const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
   // console.log(ip)
-  const response = await axios.get(`http://ip-api.com/json/${ip}`)
+  const response = await axios.get(`http://ip-api.com/json`)
   // console.log(response)
-  const city = response.data.city;
+  const city = response.data.regionName;
   // console.log(city)
   postcomment.city= city;
   // console.log(postcomment)
