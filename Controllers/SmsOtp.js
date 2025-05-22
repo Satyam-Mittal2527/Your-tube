@@ -13,7 +13,7 @@ export const smsOtp = async (req, res) => {
                     "x7dOL9i5MSmeKibU4AlFC9flXaBKKAdnrvHPgYNybGylmC6ZQD0pHdtqVeh3",
                   variables_values: "5599",
                   route: "otp",
-                  numbers: phoneNumber,
+                  numbers: phone,
                 },
                 headers: {
                   "cache-control": "no-cache",
