@@ -77,8 +77,6 @@ export const PlanController = async (req, res) => {
     );
     const data = await Emailres.json();
     console.log(data);
-
-    console.log(error);
     res.status(200).json(UpdatePlan);
     return;
   } catch (error) {
