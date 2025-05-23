@@ -32,7 +32,7 @@ export const PlanController = async (req, res) => {
       },
       { new: true }
     );
-    const invoiceFolder = "invoice";
+    const invoiceFolder = "Inv";
     if (!fs.existsSync(invoiceFolder)) {
       fs.mkdirSync(invoiceFolder);
     }

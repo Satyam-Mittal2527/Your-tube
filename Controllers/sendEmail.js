@@ -10,7 +10,7 @@ const __dirname = path.dirname(__filename);
 export const sendEmail = async (req, res) => {
   try {
     const { to } = req.body;
-    const pdfPath = path.join(__dirname, "invoice", `${to}.pdf`);
+    const pdfPath = path.join(__dirname, "Inv", `${to}.pdf`);
 
     // Check if the file exists before trying to send it
     if (!fs.existsSync(pdfPath)) {
