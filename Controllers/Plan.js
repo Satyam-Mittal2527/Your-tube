@@ -7,6 +7,7 @@ import path from "path";
 export const PlanController = async (req, res) => {
   const { id: _id } = req.params;
   const { plans } = req.body;
+  const {email} = req.body;
   const TimeLimit = {
     Bronze: 7,
     Silver: 10,
@@ -60,10 +61,27 @@ export const PlanController = async (req, res) => {
     //console.log(file);
     await file.save();
     console.log("File saved");
+    console.log("Starting sending email");
+    const Emailres = await fetch(
+      "https://your-tube-ovhq.onrender.com/send-email",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          to: email,
+        }),
+      }
+    );
+    const data = await Emailres.json();
+    console.log(data);
+
+    console.log(error);
     res.status(200).json(UpdatePlan);
     return;
   } catch (error) {
-    // console.log("Error saving file", error);
+    console.log("Error saving file", error);
     res.status(404).json(error);
     return;
   }
