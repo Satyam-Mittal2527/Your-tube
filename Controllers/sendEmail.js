@@ -4,13 +4,9 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 
 // Get __dirname in ES Modules
-try {
-  const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-} catch (error) {
-  console.log("dict",error)
-}
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const sendEmail = async (req, res) => {
   try {
@@ -20,6 +16,7 @@ export const sendEmail = async (req, res) => {
 
     // Check if the file exists before trying to send it
     if (!fs.existsSync(pdfPath)) {
+      console.log("not found pdf")
       return res.status(404).json({ error: "Invoice PDF not found" });
     }
 
