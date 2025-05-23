@@ -48,10 +48,10 @@ The Vidzy Team
 
 });
 
-    // console.log("Message sent:", info.messageId);
+    console.log("Message sent:", info.messageId);
     res.status(200).json({ message: "Email sent", id: info.messageId });
   } catch (error) {
-    // console.error("Error sending email:", error);
+    console.error("Error sending email:", error);
     res.status(500).json({ error: "Failed to send email" });
   }
 };
