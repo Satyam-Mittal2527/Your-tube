@@ -4,8 +4,13 @@ import { fileURLToPath } from "url";
 import fs from "fs";
 
 // Get __dirname in ES Modules
-const __filename = fileURLToPath(import.meta.url);
+try {
+  const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+} catch (error) {
+  console.log("dict",error)
+}
+
 
 export const sendEmail = async (req, res) => {
   try {
