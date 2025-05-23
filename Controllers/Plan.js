@@ -8,6 +8,7 @@ export const PlanController = async (req, res) => {
   const { id: _id } = req.params;
   const { plans } = req.body;
   const {email} = req.body;
+  console.log("Email:",email)
   const TimeLimit = {
     Bronze: 7,
     Silver: 10,
