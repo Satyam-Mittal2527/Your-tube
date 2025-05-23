@@ -59,7 +59,7 @@ export const PlanController = async (req, res) => {
     });
     //console.log(file);
     await file.save();
-    //console.log("File saved");
+    console.log("File saved");
     res.status(200).json(UpdatePlan);
     return;
   } catch (error) {
