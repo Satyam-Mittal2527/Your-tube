@@ -17,6 +17,7 @@ app.set("trust proxy", true);
 app.use(express.json({limit:"30mb",extended:true}))
 app.use(express.urlencoded({limit:"30mb",extended:true}))
 app.use('/uploads',express.static(path.join('uploads')))
+app.use('/invoice',express.static(path.join('Inv')))
 app.get('/', (req,res)=>{
     res.send("Your tube is working")
 })
