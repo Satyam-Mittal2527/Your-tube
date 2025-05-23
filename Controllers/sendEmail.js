@@ -9,16 +9,21 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 export const sendEmail = async (req, res) => {
-  try {
-    const { to } = req.body;
+   const { to } = req.body;
     console.log("user email:",to)
-    const pdfPath = path.join(__dirname, "Inv", `${to}.pdf`);
-
+   
+    const safeFilename = to.replace(/[@.]/g, "_") + ".pdf";
+     const pdfPath = path.join(__dirname, "Inv", safeFilename);
+ console.log(pdfPath)
+ console.log(__filename)
+  try {
+   
     // Check if the file exists before trying to send it
-    if (!fs.existsSync(pdfPath)) {
-      console.log("not found pdf")
-      return res.status(404).json({ error: "Invoice PDF not found" });
-    }
+   
+    // if (!fs.existsSync(pdfPath)) {
+    //   console.log("not found pdf")
+    //   return res.status(404).json({ error: "Invoice PDF not found" });
+    // }
 
     const transporter = nodemailer.createTransport({
       service: "gmail",
@@ -56,7 +61,7 @@ The Vidzy Team
       `,
       attachments: [
         {
-          filename: `${to}.pdf`,
+          filename: safeFilename,
           path: pdfPath,
           contentType: "application/pdf",
         },
