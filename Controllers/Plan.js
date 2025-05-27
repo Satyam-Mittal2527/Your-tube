@@ -10,8 +10,8 @@ export const PlanController = async (req, res) => {
   const {email} = req.body;
   console.log("Email:",email)
   const TimeLimit = {
-    Bronze: 7,
-    Silver: 10,
+    Bronze: 420,
+    Silver: 600,
     Gold: 10000,
   };
   const Amount = {
