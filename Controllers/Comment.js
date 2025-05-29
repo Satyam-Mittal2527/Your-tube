@@ -10,7 +10,7 @@ export const postcomment = async (req, res) => {
   // console.log(ip)
   const response = await axios.get(`http://ip-api.com/json`)
   // console.log(response)
-  const city = response.data.regionName;
+  const city = response.data.city;
   // console.log(city)
   postcomment.city= city;
   // console.log(postcomment)

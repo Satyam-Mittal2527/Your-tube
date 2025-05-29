@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const mailOtp = async (req, res) => {
+export const Otp = async (req, res) => {
   const { email } = req.body;
   const {phone} = req.body
   const cities = ["Tamil Nadu", "Kerala", "karnataka", "Andhra", "Telungana"];
@@ -9,15 +9,15 @@ export const mailOtp = async (req, res) => {
   try {
     const response = await axios.get(`http://ip-api.com/json`);
     console.log(response);
-    if (cities.includes(response.data.regionName)) {
+    if (cities.map(c => c.toLowerCase()).includes(response.data.regionName.toLowerCase())) {
       condition = true;
     }
     let responseOtp = 0;
     if (condition) {
-      responseOtp = await axios.post("https://your-tube-ovhq.onrender.com/user/TriggerMail", {
+      responseOtp = await axios.post("http://localhost:5000/user/TriggerMail", {
         email,
       });
-      // console.log("Returned Otp Code:", responseOtp.data.OtpCode);
+      console.log("Returned Otp Code:", responseOtp.data.OtpCode);
       condition = true;
       res.status(200).json({OtpCode : responseOtp.data.OtpCode})
     }else{
