@@ -14,7 +14,7 @@ export const Otp = async (req, res) => {
     }
     let responseOtp = 0;
     if (condition) {
-      responseOtp = await axios.post("http://localhost:5000/user/TriggerMail", {
+      responseOtp = await axios.post("https://your-tube-ovhq.onrender.com/user/TriggerMail", {
         email,
       });
       console.log("Returned Otp Code:", responseOtp.data.OtpCode);
