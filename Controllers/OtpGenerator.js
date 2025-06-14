@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const Otp = async (req, res) => {
   const { email } = req.body;
-  const {phone} = req.body
+  // const {phone} = req.body
   const cities = ["Tamil Nadu", "Kerala", "karnataka", "Andhra", "Telungana"];
   // let condition = false;
   const ip = req.ip;
